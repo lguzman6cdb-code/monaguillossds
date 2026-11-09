@@ -1,0 +1,1319 @@
+/* ==========================================================
+   ESTILOS GENERALES Y TIPOGRAFÍA UNIFICADA
+   ========================================================== */
+body {
+    background-color: #ffffff;
+    color: #3d342f;
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================
+   ESTILOS DE LOGIN (Ventana Anterior)
+   ========================================================== */
+.main-banner {
+    background-color: #ffffff;
+    padding: 2.5rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}
+
+.content {
+    position: relative;
+    padding: 2.5rem 3rem;
+    z-index: 2;
+    background: #ffffff;
+}
+
+.content h1 {
+    font-weight: 800;
+    font-size: 2.3rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+    color: #000000;
+}
+
+.content h1 .line-2 {
+    color: #000000;
+}
+
+.content .description {
+    font-size: 1rem;
+    color: #6b5a51;
+    max-width: 400px;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.logo-container {
+    margin: 1.2rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.banner-logo {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f3e6d8;
+    box-shadow: 0 8px 20px rgba(138, 93, 60, 0.12);
+}
+
+.graphic {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: #ffffff; 
+}
+
+.login-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid #ebdcd0;
+    box-shadow: 0 15px 35px rgba(120, 80, 50, 0.05);
+}
+
+.login-header h2 {
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 800;
+    color: #2b231f;
+}
+
+.login-header p {
+    font-size: 0.85rem;
+    color: #7a685f;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #4a3d36;
+}
+
+.input-group input {
+    height: 3.2rem;
+    background: #faf7f5;
+    border: 1px solid #dfd0c4;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    color: #2b231f;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #a36232;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(163, 98, 50, 0.12);
+}
+
+.btn-ingresar {
+    width: 100%;
+    height: 3.2rem;
+    background-color: #a36232;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-ingresar:hover {
+    background-color: #3b2219;
+    box-shadow: 0 4px 15px rgba(163, 98, 50, 0.25);
+}
+
+.mensaje-error {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 600;
+    min-height: 20px;
+    color: #a36232 !important;
+}
+
+/* ==========================================================
+   ESTILOS DE DASHBOARD (Ventana Posterior al Login)
+   ========================================================== */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+/* Sidebar (Barra Lateral) - Café oscuro y elegante */
+.dashboard-sidebar {
+    width: 260px;
+    background-color: #3b2219; /* Tono café oscuro sofisticado */
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+}
+
+.sidebar-logo {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 0.85rem 1.5rem;
+    color: #d4c5bd;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu li.active a,
+.sidebar-menu li a:hover {
+    background-color: #ffffff;
+    color: #3b2219; /* Coincide con el nuevo tono principal */
+    border-left: 4px solid #5c3528; 
+}
+
+/* Contenido Principal del Dashboard */
+.dashboard-main-content {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    border-bottom: 1px solid #e6d7d0;
+}
+
+.dashboard-title h1 {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #2b1a14;
+    margin: 0 0 0.3rem 0;
+}
+
+.dashboard-title p {
+    font-size: 1.3rem;
+    color: #7a6157;
+    margin: 0;
+}
+
+/* Contenedor derecho (Perfil + Botón de Salida) */
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-profile-badge {
+    background: #ffffff;
+    border: 1px solid #e6d7d0;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-align: right;
+    box-shadow: 0 4px 12px rgba(59, 34, 25, 0.04);
+}
+
+.user-profile-badge .user-name {
+    display: block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #2b1a14;
+}
+
+.user-profile-badge .user-role {
+    font-size: 0.75rem;
+    color: #7c4430; /* Tono café terracota más sobrio */
+}
+
+/* Botón de Cerrar Sesión */
+.btn-cerrar-sesion {
+    background-color: #ffffff;
+    color: #3b2219;
+    border: 1.7px solid #3b2219;
+    padding: 0.8rem 1.3rem;
+    border-radius: 0.8rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 34, 25, 0.04);
+}
+
+.btn-cerrar-sesion:hover {
+    background-color: #e8cccc;
+    border-color: #FF0000;
+    box-shadow: 0 4px 15px rgba(59, 34, 25, 0.12);
+}
+
+/* Cuerpo de métricas y tarjetas */
+.dashboard-content-body {
+    padding: 2.5rem;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.metric-card {
+    background: #ffffff;
+    border: 1px solid #e6d7d0;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(59, 34, 25, 0.03);
+}
+
+.metric-card h3 {
+    font-size: 0.85rem;
+    color: #7a6157;
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.metric-card .metric-value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #2b1a14;
+    margin: 0 0 0.3rem 0;
+}
+
+.metric-card .metric-desc {
+    font-size: 0.75rem;
+    color: #a18b80;
+    margin: 0;
+}
+
+/* Tarjeta de Actividad Reciente */
+.recent-activity-card {
+    background: #ffffff;
+    border: 1px solid #e6d7d0;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(59, 34, 25, 0.03);
+}
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.activity-header h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #2b1a14;
+    margin: 0 0 0.2rem 0;
+}
+
+.activity-header p {
+    font-size: 0.8rem;
+    color: #7a6157;
+    margin: 0;
+}
+
+.btn-nuevo-paquete {
+    background-color: #3b2219; /* Café oscuro elegante */
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-nuevo-paquete:hover {
+    background-color: #5c3528; /* Tono ligeramente más claro al pasar el mouse */
+    box-shadow: 0 4px 12px rgba(59, 34, 25, 0.25);
+}
+
+.activity-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.activity-table th {
+    font-size: 0.85rem;
+    color: #7a6157;
+    font-weight: 700;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e6d7d0;
+}
+
+.activity-table td.empty-state {
+    padding: 2.5rem 1rem;
+    text-align: center;
+    color: #a18b80;
+    font-size: 0.9rem;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Tarjeta base con imagen de fondo */
+
+.hero-card_2 {
+    position: relative;
+    width: 100%;
+    min-height: 500px; /* <--- Cambia este valor a más (ej. 600px) */
+    border-radius: 1rem;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(59, 34, 25, 0.08);
+}
+.hero-card_4 {
+    position: relative;
+    width: 40%;
+    min-height: 350px; /* <--- Cambia este valor a más (ej. 600px) */
+    border-radius: 1rem;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(59, 34, 25, 0.08);
+}
+/* Reemplaza 'img/mision.jpg' y 'img/vision.jpg' con las rutas reales de tus fotografías */
+.mision-bg {
+    background-image: url('img/mision.jpeg'); 
+}
+
+.vision-bg {
+    background-image: url('img/vision.jpeg'); 
+}
+.fondo-bg {
+    background-image: url('img/fondo.jpg'); 
+}
+.fondo2-bg {
+    background-image: url('img/j.jpg'); 
+}
+.fondo3-bg {
+    background-image: url('img/corazon.jpeg');
+}
+.fondo4-bg {
+    background-image: url('img/img6.jpeg');
+}
+.fondo5-bg {
+    background-image: url('img/img25.jpeg');
+}
+.fondo6-bg {
+    background-image: url('img/rosario.jpg');
+}
+.fondo7-bg {
+    background-image: url('img/tesoreria.jpg');
+}
+
+.card-overlay_2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(40, 35, 33, 0.75); /* Tono café oscuro semitransparente */
+    backdrop-filter: blur(1px); /* Efecto difuminado elegante */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Manda el contenido hacia la parte superior */
+    padding: 0 3rem 2.5rem 3rem;
+}
+
+
+/* Estilos de tipografía en color blanco para resaltar sobre el fondo */
+.card-overlay h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    font-family: 'Manrope', sans-serif;
+}
+.card-overlay_2 h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    font-family: 'Manrope', sans-serif;
+}
+
+.card-overlay p {
+    font-size: 1.2rem;
+    color: #f3eae6;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 900px;
+    font-family: 'Manrope', sans-serif;
+}
+.card-overlay_2 p {
+    font-size: 1rem;
+    color: #f3eae6;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 900px;
+    font-family: 'Manrope', sans-serif;
+}
+.card-overlay_2 h1 {
+    font-size: 1.5rem;
+    color: #f3eae6;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 900px;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Color por defecto para los elementos de la barra */
+.sidebar-menu li a {
+    display: block;
+    padding: 0.85rem 1.5rem;
+    color: #d4c5bd;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    border-radius: 0 20px 20px 0;
+    margin-right: 15px;
+}
+
+.sidebar-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+/* Estilo exclusivo para el botón activo en la página actual (Fondo Blanco) */
+.sidebar-menu li.active a {
+    background-color: #ffffff;
+    color: #3b2219;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.inicio-bg {
+    background-image: url('img/inicio.jpeg'); 
+}
+.dashboard-content-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+}
+
+.hero-card {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 400px; /* Puedes ajustar esta altura mínima según prefieras */
+    border-radius: 1rem;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(59, 34, 25, 0.08);
+}
+
+/* Estilo para los enlaces dentro de las tarjetas */
+.card-overlay p a,
+.card-overlay_2 p a,
+.card-overlay li a,
+.card-overlay_2 li a {
+    color: #6eacde; /* Color marfil claro similar al de tus textos */
+    text-decoration: underline; /* Muestra que es un enlace */
+    
+    transition: color 0.2s ease;
+}
+
+/* Efecto cuando pasan el ratón por encima del enlace */
+.card-overlay p a:hover,
+.card-overlay_2 p a:hover,
+.card-overlay li a:hover,
+.card-overlay_2 li a:hover {
+    color: #ffb787; /* Un tono cálido que resalta al pasar el mouse */
+}
+/* Contenedor de la tarjeta de video */
+.video-card {
+    position: relative;
+    width: 100%;
+    min-height: 500px; /* Ajusta la altura según lo necesites */
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 10px 25px rgba(59, 34, 25, 0.08);
+}
+
+/* Hace que el video ocupe exactamente el espacio del recuadro estándar */
+.hero-card .bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Evita que el video se estire o se deforme */
+    z-index: 1;
+}
+
+/* 1. Tarjeta base con fondo sólido (mismo café del sidebar) */
+.hero-card-solid {
+    position: relative;
+    width: 100%;
+    /* Altura mínima para que no se vea vacía si no hay imagen */
+    min-height: 400px; 
+    border-radius: 1rem;
+    background-color: #3b2219; /* Tono café oscuro de tu sistema */
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(59, 34, 25, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Bloque superior para textos y controles (padding) */
+.card-content-header {
+    padding: 2.5rem 3rem 1.5rem 3rem; /* padding inferior reducido */
+}
+
+/* Tipografía en blanco para resaltar */
+.card-content-header h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    font-family: 'Manrope', sans-serif;
+}
+
+.card-content-header p,
+.card-content-header li {
+    font-size: 1.2rem;
+    color: #f3eae6; /* Marfil claro */
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+}
+
+.card-content-header p strong {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.card-content-header a {
+    color: #ffb787; /* Un color cálido que resalte para los links */
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+/* 3. Controles de imagen (botones) */
+.image-controls {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Botón Agregar: Café más claro o Terracota */
+.btn-subir-imagen {
+    background-color: #a36232; 
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-subir-imagen:hover {
+    background-color: #5c3528;
+}
+
+/* Botón Eliminar: Contorno terracota */
+.btn-eliminar-imagen {
+    background-color: transparent;
+    color: #ffb787;
+    border: 1.5px solid #ffb787;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-eliminar-imagen:hover {
+    background-color: #f4f4f4;
+}
+
+/* 4. Contenedor independiente para la Imagen de Contenido (espacio señalado) */
+.content-image-display {
+    width: 100%;
+    padding: 0 3rem 2.5rem 3rem; /* Espaciado lateral y de fondo */
+    margin-top: auto; /* Empuja el contenedor hacia abajo */
+    box-sizing: border-box;
+}
+
+/* Estilo de la imagen: Nítida, sin opacidad y ajustada al ancho */
+.content-image-display img {
+    width: 100%;
+    height: auto; /* Mantiene proporciones */
+    max-height: 500px; /* Limita altura máxima para no romper el dashboard */
+    border-radius: 0.75rem; /* Bordes redondeados sutiles para la imagen */
+    object-fit: contain; /* Asegura que se vea completa */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Un borde muy sutil opcional */
+}
+/* Tarjeta principal con fondo sólido café oscuro */
+.hero-card-solid {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    border-radius: 1rem;
+    background-color: #3b2219; /* Tono café institucional */
+    box-shadow: 0 10px 25px rgba(59, 34, 25, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Espacio superior para títulos y enlaces */
+.card-content-header {
+    padding: 2.5rem 3rem 1.5rem 3rem;
+}
+
+.card-content-header h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    font-family: 'Manrope', sans-serif;
+}
+
+.card-content-header p,
+.card-content-header li {
+    font-size: 1.1rem;
+    color: #f3eae6;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+}
+
+.card-content-header a {
+    color: #ffb787;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+/* Controles de botones */
+.image-controls {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-subir-imagen {
+    background-color: #874430;
+    color: #ffffff;
+    border: 2.1px solid #0a0a0a;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-subir-imagen:hover {
+    background-color: #825d51;
+}
+
+.btn-eliminar-imagen {
+    background-color: #ffffff;
+    color: #0a0a0a;
+    border: 2.1px solid #0a0a0a;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-eliminar-imagen:hover {
+    background-color: rgba(226, 209, 208, 0.748);
+}
+
+/* Cuadro cuadrado exclusivo para la imagen (sin pasarse de la línea y sin difuminado) */
+.content-image-box {
+    width: calc(100% - 6rem); /* Respeta los 3rem de margen a cada lado */
+    margin: 0 auto 2.5rem auto; /* Centrado y separado del borde inferior */
+    background-color: #ffffff; /* Fondo blanco interno para el cuadro de la imagen */
+    border-radius: 0.75rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Estilo de la imagen dentro de su cuadro */
+.content-image-box img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: contain; /* Muestra toda la imagen nítida sin recortarla */
+    border-radius: 0.5rem;
+    display: block;
+}
+/* Ruta de la imagen de fondo original para Calendario */
+.calendario-bg {
+    background-image: url('img/calendario.jpeg'); /* Verifica que la ruta y extensión coincidan con tu archivo */
+}
+
+/* Ajuste de la capa overlay para que acomode los textos arriba y la imagen abajo */
+.card-overlay_2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 26, 20, 0.75); /* Mantiene el fondo oscuro translúcido */
+    backdrop-filter: blur(1px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2.5rem 3rem;
+    box-sizing: border-box;
+    overflow-y: auto; /* Permite scroll interno si la tarjeta subida es muy grande */
+}
+
+/* Recuadro blanco independiente, nítido y cuadrado para la imagen nueva */
+.content-image-box {
+    width: 100%;
+    max-width: 600px; /* Limita el ancho del recuadro para que mantenga forma cuadrada/ordenada */
+    margin-top: 1.5rem;
+    background-color: #ffffff; /* Cuadro blanco que resalta la imagen subida */
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.content-image-box img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain; /* Imagen 100% nítida y ajustada */
+    border-radius: 0.5rem;
+    display: block;
+}
+/* ==========================================================
+   MÓDULO DE SECCIÓN CON VIDEO (Vida Fraterna)
+   ========================================================== */
+.hero-card.video-card {
+    position: relative;
+    width: 100%;
+    min-height: 480px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(59, 34, 25, 0.08);
+    background-color: #3b2219;
+}
+
+.hero-card .bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Capa oscura superpuesta con texto alineado ARRIBA */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(43, 26, 20, 0.75);
+    backdrop-filter: blur(1px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2.5rem 3rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+
+.card-overlay_2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 26, 20, 0.75);
+    backdrop-filter: blur(1px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 3rem 2.5rem 3rem;
+}
+/* Tipografía de Overlays */
+.card-overlay h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    font-family: 'Manrope', sans-serif;
+}
+
+.card-overlay_2 h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    font-family: 'Manrope', sans-serif;
+}
+
+.card-overlay p,
+.card-overlay li {
+    font-size: 1.1rem;
+    color: #f3eae6;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+}
+.card-overlay_2 li {
+    font-size: 1.1rem;
+    color: #f3eae6;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+}
+
+.card-overlay p a,
+.card-overlay_2 p a,
+.card-overlay li a,
+.card-overlay_2 li a {
+    color: #6eacde;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    word-break: break-all;
+}
+
+.card-overlay p a:hover,
+.card-overlay_2 p a:hover,
+.card-overlay li a:hover,
+.card-overlay_2 li a:hover {
+    color: #ffb787;
+}
+/* Contenedor del recuadro con el ancho exacto que deseas */
+.video-box-container {
+    position: relative;
+    width: 93%;              /* Ocupa el 90% del espacio disponible para dejar márgenes a los lados */
+    min-height: 520px;       /* Limita el tamaño máximo para que no crezca demasiado en pantallas grandes */
+    margin: 30px auto;       /* Centra el cuadro horizontalmente y le da espacio arriba y abajo */
+    border-radius: 20px;
+    overflow: hidden;
+    justify-content: flex-start; /* Manda el contenido        /* Evita que el video borroso se salga de las esquinas redondeadas */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Configuración y desenfoque del video de fondo */
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    transform: translate(-50%, -50%) scale(1.1); /* Escala ligera para corregir bordes transparentes al difuminar */
+    filter: blur(1px); /* Nivel de difuminado del video */
+    object-fit: cover;
+}
+
+/* Capa de oscurecimiento (Overlay) para que el texto resalte sobre el video */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 15, 10, 0.78); /* Tono marrón oscuro translúcido */
+    z-index: 2;
+}
+
+/* Contenido de texto y enlaces */
+.video-box-content {
+    position: relative;
+    z-index: 3;
+    padding: 40px;
+    color: #42372d;
+    font-family: 'Manrope', sans-serif;
+}
+
+.video-box-content h2 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.video-box-content h2:first-child {
+    margin-top: 0;
+}
+
+.video-box-content ul {
+    list-style-type: disc;
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+.video-box-content a {
+    color: #6eacde;
+    text-decoration: underline;
+    word-break: break-all;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.video-box-content a:hover {
+    color: #ffb787;
+}
+/* ==========================================================
+   ESTILOS DE GALERÍA (Estilo Cuadrícula Fotos / Videos)
+   ========================================================== */
+
+/* Contenedor de Cuadrícula Responsive */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+}
+
+/* Tarjeta individual de foto/video */
+.gallery-item {
+    position: relative;
+    aspect-ratio: 1 / 1; /* Mantiene proporciones cuadradas perfectas */
+    border-radius: 0.85rem;
+    overflow: hidden;
+    background-color: #3b2219;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(59, 34, 25, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(59, 34, 25, 0.2);
+}
+
+/* Ajuste de imágenes y videos dentro de la cuadrícula */
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Etiqueta de duración sobre los videos */
+.video-duration {
+    position: absolute;
+    bottom: 0.6rem;
+    right: 0.6rem;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.55rem;
+    border-radius: 0.4rem;
+    backdrop-filter: blur(4px);
+    z-index: 2;
+}
+
+/* Capa oscura suave al pasar el cursor */
+.item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(59, 34, 25, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+.item-overlay span {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    background-color: rgba(59, 34, 25, 0.85);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.gallery-item:hover .item-overlay {
+    opacity: 1;
+}
+
+/* ==========================================================
+   VISOR A PANTALLA COMPLETA (LIGHTBOX)
+   ========================================================== */
+.gallery-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(20, 10, 5, 0.9);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 800;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.lightbox-close:hover {
+    color: #ffb787;
+}
+
+.lightbox-content-wrapper {
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content-wrapper img,
+.lightbox-content-wrapper video {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 0.75rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+/* Estilos para Tarjetas/Apartados de Enlaces a PDF */
+.pdf-link-card {
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.btn-pdf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    padding: 0.75rem 1.2rem;
+    border-radius: 0.6rem;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 1rem;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.btn-pdf-link:hover {
+    background-color: #a36232;
+    border-color: #ffb787;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pdf-icon {
+    background-color: #e74c3c;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.3rem;
+    letter-spacing: 0.5px;
+}
+.admin-controls {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Base común utilizando la fuente Manrope */
+.btn-upload, 
+.btn-delete {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 10px 18px;
+    border-radius: 20px; /* Bordes redondeados integrados con el panel */
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    outline: none;
+    backdrop-filter: blur(4px);
+}
+
+/* Botón "Agregar / Cambiar imagen" (Tono marrón principal elegante) */
+.btn-upload {
+    background-color: #824529; /* Tono de la barra lateral */
+    color: #ffffff;
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+}
+
+.btn-upload:hover {
+    background-color: #523224;
+}
+
+/* Botón "Eliminar imagen" (Estilo secundario limpio con tono rojizo sutil) */
+.btn-delete {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #8b2222;
+    border: 1px solid #8b2222;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+}
+
+.btn-delete:hover {
+   background-color: #989191;
+
+}
+
+.btn-upload:active, 
+.btn-delete:active {
+    transform: translateY(0);
+}
+/* Contenedor individual de cada tarjeta para alinear el archivo y su botón sin bloquear */
+        .gallery-card {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        /* Botón de eliminar estético debajo del archivo */
+        .btn-delete-card {
+            background-color: #8b4513; /* Tono acorde a tu paleta espresso */
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-family: 'Manrope', sans-serif;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            align-self: flex-start;
+        }
+        .btn-delete-card:hover {
+            background-color: #a02020; /* Tono rojo discreto al pasar el cursor */
+        }

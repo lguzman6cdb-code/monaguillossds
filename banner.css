@@ -1,0 +1,294 @@
+body {
+    background-color: #ffffff;
+    color: #3d342f;
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+}
+
+.main-banner {
+    background-color: #ffffff;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}
+
+/* Columna Izquierda */
+.content {
+    position: relative;
+    padding: 2.5rem 3rem;
+    z-index: 2;
+    border-radius: 1rem;
+    background: #ffffff;
+}
+
+.content h1 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 2.3rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+    color: #000000;
+}
+
+.content h1 .line-2 {
+    color: #000000;
+}
+
+.content .description {
+    font-size: 1rem;
+    color: #6b5a51;
+    max-width: 400px;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+/* Contenedor estético para la imagen debajo de la descripción */
+.logo-container {
+    margin: 1.2rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.banner-logo {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f3e6d8;
+    box-shadow: 0 8px 20px rgba(138, 93, 60, 0.12);
+    transition: transform 0.3s ease;
+}
+
+.banner-logo:hover {
+    transform: scale(1.04);
+}
+
+.footer-left {
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+    color: #9e887d;
+}
+
+/* Columna Derecha / Formulario de Login (Sin ningún difuminado, fondo plano blanco) */
+.graphic {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: #ffffff; 
+}
+
+.login-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid #ebdcd0;
+    box-shadow: 0 15px 35px rgba(120, 80, 50, 0.05);
+}
+
+.login-header h2 {
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #2b231f;
+}
+
+.login-header p {
+    font-size: 0.85rem;
+    color: #7a685f;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2b231f;
+}
+
+.input-group input {
+    height: 3.2rem;
+    background: #faf7f5;
+    border: 1px solid #dfd0c4;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    color: #2b231f;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: #b09f94;
+}
+
+.input-group input:focus {
+    border-color: #3b2219;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(163, 98, 50, 0.12);
+}
+
+.btn-ingresar {
+    width: 100%;
+    height: 3.2rem;
+    background-color: #3b2219;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-ingresar:hover {
+    background-color: #3b2219;
+    box-shadow: 0 4px 15px rgba(163, 98, 50, 0.25);
+}
+
+.mensaje-error {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 600;
+    min-height: 20px;
+}
+
+.login-footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #a39287;
+    margin-top: 2rem;
+}
+
+/* Estilos para el Dashboard */
+.dashboard-main {
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #ffffff;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ebdcd0;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin: 0;
+    color: #2b231f;
+}
+
+.dashboard-title .line-2 {
+    color: #a36232;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-pdf {
+    background-color: #a36232;
+    border: none;
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-pdf:hover {
+    background-color: #8c5228;
+    box-shadow: 0 4px 12px rgba(163, 98, 50, 0.25);
+}
+
+.btn-cerrar-sesion {
+    background: #fdf5f2;
+    border: 1px solid #f4d0c7;
+    color: #b93c1c;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cerrar-sesion:hover {
+    background: #fbeae5;
+}
+
+.welcome-card {
+    background: #ffffff;
+    border: 1px solid #ebdcd0;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 15px 35px rgba(120, 80, 50, 0.05);
+}
+
+.welcome-card h2 {
+    margin-top: 0;
+    font-weight: 800;
+    color: #2b231f;
+}
+
+.welcome-card p {
+    color: #6b5a51;
+    margin-bottom: 0;
+}
+
+.pdf-info {
+    margin-top: 1.5rem;
+    color: #4a3d36;
+    font-size: 0.95rem;
+}

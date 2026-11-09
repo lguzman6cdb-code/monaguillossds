@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Monaguillos Santo Domingo Savio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Barra Lateral (Sidebar) -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="img/logo.jpg" alt="Monaguillos Santo Domingo Savio" class="banner-logo">
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="dashboard.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="tesoreria.html">Tesoreria</a></li>
+                <li><a href="vidafraterna.html">Vida Fraterna</a></li>
+                <li><a href="misas.html">Misas</a></li>
+                <li><a href="comunicacion.html">Comunicación</a></li>
+                <li><a href="eventos.html">Eventos especiales</a></li>
+                <li><a href="equipo.html">Equipo de Coordinación</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+            </ul>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="dashboard-main-content">
+            <!-- Barra Superior -->
+            <header class="dashboard-topbar">
+                <div class="dashboard-title">
+                    <h1>Monaguillos Santo Domingo Savio</h1>
+                    <p>Nosotros hacemos consistir la santidad en estar siempre alegres.</p>
+                </div>
+                <div class="topbar-right">
+                    <button id="btnCerrarSesion" class="btn-cerrar-sesion">Cerrar sesión</button>
+                </div>
+            </header>
+
+            <!-- Cuerpo del Panel de Inicio -->
+            <div class="dashboard-content-body">
+                <div class="about-container">
+                    <div class="hero-card inicio-bg" style="position: relative;">
+    <div class="card-overlay" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; padding: 3rem;">
+                            <h2>Bienvenidos</h2>
+                            <p>Un espacio de encuentro, fraternidad y entrega en el altar, donde cultivamos nuestra fe con la alegría que caracteriza a los jóvenes y niños de Santo Domingo Savio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script de control de sesión -->
+    <script>
+        if (localStorage.getItem('sesionIniciada') !== 'true') {
+            window.location.href = 'index.html';
+        }
+
+        document.getElementById('btnCerrarSesion').addEventListener('click', () => {
+            localStorage.removeItem('sesionIniciada');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monaguillos Santo Domingo Savio - Iniciar Sesión</title>
+    <!-- Fuentes de Google Fonts (Manrope) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Archivos CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="banner.css">
+    <link rel="stylesheet" href="graphics.css">
+</head>
+<body>
+    <main class="main-banner">
+        <div class="grid-container">
+            
+            <!-- Columna Izquierda: Título, descripción y la imagen integrada debajo -->
+            <div class="content">
+                <h1 class="s-center">
+                    Monaguillos <span class="line-2">Santo</span><br>
+                    <span class="line-2">Domingo Savio</span>
+                </h1>
+                <p class="description s-center">
+                    Pagina oficial del grupo de Monaguillos Santo Domingo Savio.
+                </p>
+                
+                <!-- Imagen colocada debajo de la descripción con la etiqueta img y atributo src -->
+                <div class="logo-container">
+                    <img src="img/logo.jpg" alt="Monaguillos Santo Domingo Savio" class="banner-logo">
+                </div>
+
+                <div class="footer-left">
+                    Parroquia San Juan Bosco, zona 11 Guatemala
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Formulario de Login -->
+            <div class="graphic">
+                <div class="graphics-circles">
+                    <div class="glow-effect"></div>
+                </div>
+
+                <div class="login-wrapper">
+                    <div class="login-header">
+                        <h2>Iniciar sesión</h2>
+                        <p>Ingresa tus credenciales para continuar</p>
+                    </div>
+
+                    <form id="loginForm" class="login-form">
+                        <div class="input-group">
+                            <label for="usuario">Usuario</label>
+                            <input type="text" id="usuario" placeholder="Ingresa tu usuario" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="contrasena">Contraseña</label>
+                            <input type="password" id="contrasena" placeholder="Ingresa tu contraseña" required>
+                        </div>
+
+                        <div id="mensajeError" class="mensaje-error"></div>
+
+                        <button type="submit" class="btn-ingresar">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

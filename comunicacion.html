@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Monaguillos Santo Domingo Savio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Barra Lateral (Sidebar) -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="img/logo.jpg" alt="Monaguillos Santo Domingo Savio" class="banner-logo">
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="tesoreria.html">Tesoreria</a></li>
+                <li><a href="vidafraterna.html">Vida Fraterna</a></li>
+                <li><a href="misas.html">Misas</a></li>
+                <li class="active"><a href="comunicacion.html">Comunicación</a></li>
+                <li><a href="eventos.html">Eventos especiales</a></li>
+                <li><a href="equipo.html">Equipo de Coordinación</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+            </ul>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="dashboard-main-content">
+            <!-- Barra Superior -->
+            <header class="dashboard-topbar">
+                <div class="dashboard-title">
+                    <h1>Comunicación</h1>
+                    <p>Monaguillos Santo Domingo Savio</p>
+                </div>
+                <div class="topbar-right">
+                    <button id="btnCerrarSesion" class="btn-cerrar-sesion">Cerrar sesión</button>
+                </div>
+            </header>
+
+
+            <!-- Cuerpo del Panel de Inicio -->
+    <div class="dashboard-content-body">
+                <div class="about-container">
+                    
+                    <!-- Apartado de Coordinador -->
+                    <div class="hero-card_2 fondo3-bg">
+                        <div class="card-overlay_2">
+                            <h2>Plantillas de invitación para formaciones</h2>    
+                            <h1>INVITACIONES (PLANTILLAS Y REGISTRO)</h1>
+                            <ul>
+    <!-- Aquí colocas el enlace apuntando a tu diseño de Canva -->
+    <li>
+        <a href="https://www.canva.com/design/DAFcAGkRbTw/rczrA3knakoLIuSe1ElsnA/edit?utm_content=DAFcAGkRbTw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">
+            https://www.canva.com/design/DAFcAGkRbTw/rczrA3knakoLIuSe1ElsnA/edit?utm_content=DAFcAGkRbTw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+        </a>
+    </li>
+</ul>
+
+                            <h1>LÍNEA GRÁFICA</h1>
+                            <ul>
+    <!-- Aquí colocas el enlace apuntando a tu diseño de Canva -->
+    <li>
+        <a href="https://www.canva.com/design/DAFawXwanSg/TfgSZO7IMJJSK3dx1QMfBg/edit?utm_content=DAFawXwanSg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">
+            https://www.canva.com/design/DAFawXwanSg/TfgSZO7IMJJSK3dx1QMfBg/edit?utm_content=DAFawXwanSg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+        </a>     
+    </li>
+</ul>      
+                            <h1>USUARIO Y CONTRASEÑA DE INSTAGRAM</h1>  
+                            <p>    Usuario: monaguillosdb</p> 
+                            <p>    Contraseña: siemprealegres</p>             
+                        </div>                       
+                    </div>                  
+                </div> 
+    </div>          
+
+            
+
+    <!-- Script de control de sesión -->
+    <script>
+        if (localStorage.getItem('sesionIniciada') !== 'true') {
+            window.location.href = 'index.html';
+        }
+
+        document.getElementById('btnCerrarSesion').addEventListener('click', () => {
+            localStorage.removeItem('sesionIniciada');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Monaguillos Santo Domingo Savio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Barra Lateral (Sidebar) -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="img/logo.jpg" alt="Monaguillos Santo Domingo Savio" class="banner-logo">
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="tesoreria.html">Tesoreria</a></li>
+                <li><a href="vidafraterna.html">Vida Fraterna</a></li>
+                <li><a href="misas.html">Misas</a></li>
+                <li><a href="comunicacion.html">Comunicación</a></li>
+                <li><a href="eventos.html">Eventos Especiales</a></li>
+                <li><a href="equipo.html">Equipo de Coordinación</a></li>
+                <li class="active"><a href="galeria.html">Galeria</a></li>
+            </ul>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="dashboard-main-content">
+            <!-- Barra Superior -->
+            <header class="dashboard-topbar">
+                <div class="dashboard-title">
+                    <h1>Galería</h1>
+                    <p>Momentos especiales del grupo de Monaguillos</p>
+                </div>
+                <div class="topbar-right">
+                    <button id="btnCerrarSesion" class="btn-cerrar-sesion">Cerrar sesión</button>
+                </div>
+            </header>
+
+            <!-- Cuerpo del Panel de Galería -->
+            <div class="dashboard-content-body">
+                
+                <!-- Controles para Subir Archivos Multimedia -->
+                <div class="image-controls" style="margin-bottom: 25px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                    <label for="inputSubirMultimedia" class="btn-upload" style="cursor: pointer;">Subir archivo</label>
+                    <input type="file" id="inputSubirMultimedia" accept="image/*,video/*" style="display: none;">
+                </div>
+
+                <!-- Cuadrícula Estilo Apple Photos con Paleta Espresso -->
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Los elementos se cargarán dinámicamente desde la nube -->
+                </div>
+
+            </div> 
+        </main>
+    </div>
+
+    <!-- Visor en Pantalla Completa (Lightbox Modal) -->
+    <div id="galleryLightbox" class="gallery-lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content-wrapper" onclick="event.stopPropagation()">
+            <div id="lightboxMediaContainer"></div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK v10 (Firestore en tiempo real para la galería) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1F2QFk-q3vxvB2nVNRAHpxcSWAdLBihI",
+            authDomain: "monaguillos-7b723.firebaseapp.com",
+            projectId: "monaguillos-7b723",
+            storageBucket: "monaguillos-7b723.firebasestorage.app",
+            messagingSenderId: "514601789417",
+            appId: "1:514601789417:web:ec5cdbb548ec8475a48d78",
+            measurementId: "G-3HCZZF2YLX"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        /* Verificación de sesión */
+        if (localStorage.getItem('sesionIniciada') !== 'true') {
+            window.location.href = 'index.html';
+        }
+
+        document.getElementById('btnCerrarSesion').addEventListener('click', () => {
+            localStorage.removeItem('sesionIniciada');
+            window.location.href = 'index.html';
+        });
+
+        const galleryGrid = document.getElementById('galleryGrid');
+        const inputSubir = document.getElementById('inputSubirMultimedia');
+
+        const collectionRef = collection(db, "galeriaMultimedia");
+
+        // Escuchar en tiempo real los cambios en la colección de Firestore
+        onSnapshot(collectionRef, (snapshot) => {
+            galleryGrid.innerHTML = '';
+            
+            if (snapshot.empty) {
+                galleryGrid.innerHTML = `<p style="color: white; text-align: center; width: 100%;">No hay elementos en la galería todavía.</p>`;
+                return;
+            }
+
+            snapshot.forEach((docSnapshot) => {
+                const item = docSnapshot.data();
+                const docId = docSnapshot.id;
+
+                const card = document.createElement('div');
+                card.className = 'gallery-card';
+
+                const divItem = document.createElement('div');
+                divItem.className = item.type === 'video' ? 'gallery-item video-item' : 'gallery-item';
+                divItem.setAttribute('onclick', 'openLightbox(this)');
+
+                if (item.type === 'img') {
+                    divItem.innerHTML = `
+                        <img src="${item.src}" alt="${item.alt || 'Imagen galería'}">
+                        <div class="item-overlay"></div>
+                    `;
+                } else {
+                    divItem.innerHTML = `
+                        <video src="${item.src}" muted preload="metadata"></video>
+                        <span class="video-duration">${item.duration || '▶'}</span>
+                        <div class="item-overlay"></div>
+                    `;
+                }
+
+                // Botón de eliminar conectado directamente a Firestore
+                const botonEliminar = document.createElement('button');
+                botonEliminar.className = 'btn-delete-card';
+                botonEliminar.textContent = 'Eliminar';
+                botonEliminar.onclick = async (e) => {
+                    e.stopPropagation();
+                    if (confirm('¿Deseas eliminar este archivo de la galería para todos los usuarios?')) {
+                        try {
+                            await deleteDoc(doc(db, "galeriaMultimedia", docId));
+                        } catch (error) {
+                            console.error("Error al eliminar de la nube:", error);
+                            alert("No se pudo eliminar el archivo.");
+                        }
+                    }
+                };
+
+                card.appendChild(divItem);
+                card.appendChild(botonEliminar);
+                galleryGrid.appendChild(card);
+            });
+        });
+
+        // Función para comprimir imágenes automáticamente antes de subirlas
+        function comprimirImagen(archivo, callback) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const MAX_WIDTH = 1200; // Ancho máximo optimizado para web
+                    const MAX_HEIGHT = 1200; // Alto máximo optimizado
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height) {
+                        if (width > MAX_WIDTH) {
+                            height *= MAX_WIDTH / width;
+                            width = MAX_WIDTH;
+                        }
+                    } else {
+                        if (height > MAX_HEIGHT) {
+                            width *= MAX_HEIGHT / height;
+                            height = MAX_HEIGHT;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    // Convertir a formato JPEG comprimido al 80% de calidad (pesa muy poco)
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                    callback(dataUrl);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(archivo);
+        }
+
+        // Manejar la subida de nuevos archivos con compresión automática
+        inputSubir.addEventListener('change', function(event) {
+            const archivo = event.target.files[0];
+            if (!archivo) return;
+
+            const esVideo = archivo.type.startsWith('video');
+
+            if (esVideo) {
+                // Para videos, advertimos que deben ser cortos para cumplir con el límite de Firestore
+                if (archivo.size > 900000) { // Aproximadamente 900 KB
+                    alert('el archivo es demasiado pesado para la base de datos. Por favor, sube un video muy corto o comprimido.');
+                    inputSubir.value = '';
+                    return;
+                }
+
+                const lector = new FileReader();
+                lector.onload = async function(e) {
+                    try {
+                        await addDoc(collectionRef, {
+                            type: 'video',
+                            src: e.target.result,
+                            duration: '▶',
+                            alt: 'Video galería'
+                        });
+                        inputSubir.value = '';
+                    } catch (error) {
+                        console.error("Error al subir video:", error);
+                        alert("El video excede el límite permitido por la base de datos.");
+                    }
+                };
+                lector.readAsDataURL(archivo);
+
+            } else {
+                // Si es imagen, la comprimimos automáticamente en milisegundos
+                comprimirImagen(archivo, async function(base64Comprimido) {
+                    try {
+                        await addDoc(collectionRef, {
+                            type: 'img',
+                            src: base64Comprimido,
+                            alt: 'Imagen galería'
+                        });
+                        inputSubir.value = '';
+                    } catch (error) {
+                        console.error("Error al subir imagen:", error);
+                        alert("Ocurrió un error al subir la imagen a la nube.");
+                    }
+                });
+            }
+        });
+
+        /* Funciones globales para abrir y cerrar fotos/videos en pantalla completa */
+        window.openLightbox = function(element) {
+            const lightbox = document.getElementById('galleryLightbox');
+            const container = document.getElementById('lightboxMediaContainer');
+            container.innerHTML = '';
+
+            const img = element.querySelector('img');
+            const video = element.querySelector('video');
+
+            if (img) {
+                const newImg = document.createElement('img');
+                newImg.src = img.src;
+                container.appendChild(newImg);
+            } else if (video) {
+                const newVideo = document.createElement('video');
+                newVideo.src = video.src;
+                newVideo.controls = true;
+                newVideo.autoplay = true;
+                container.appendChild(newVideo);
+            }
+
+            lightbox.style.display = 'flex';
+        }
+
+        window.closeLightbox = function(event) {
+            const lightbox = document.getElementById('galleryLightbox');
+            const container = document.getElementById('lightboxMediaContainer');
+            lightbox.style.display = 'none';
+            container.innerHTML = '';
+        }
+    </script>
+</body>
+</html>

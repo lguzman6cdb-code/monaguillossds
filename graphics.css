@@ -1,0 +1,34 @@
+.graphics-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.glow-effect {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    /* Eliminamos el verde por completo y dejamos transparente */
+    background: transparent;
+    top: 15%;
+    left: 5%;
+    border-radius: 50%;
+    filter: blur(70px);
+    animation: none; /* Desactivamos la animación del difuminado */
+}
+
+@keyframes pulse-glow {
+    0% {
+        transform: scale(0.9) translate(0, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.2) translate(30px, -15px);
+        opacity: 0;
+    }
+}

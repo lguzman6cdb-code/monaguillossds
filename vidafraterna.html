@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vida Fraterna - Monaguillos Santo Domingo Savio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Importar pdf-lib y pdf.js para rasterizar y comprimir PDFs grandes -->
+    <script src="https://unpkg.com/pdf-lib@1.4.0/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    </script>
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Barra Lateral (Sidebar) -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="img/logo.jpg" alt="Monaguillos Santo Domingo Savio" class="banner-logo">
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="tesoreria.html">Tesoreria</a></li>
+                <li class="active"><a href="vidafraterna.html">Vida Fraterna</a></li>
+                <li><a href="misas.html">Misas</a></li>
+                <li><a href="comunicacion.html">Comunicación</a></li>
+                <li><a href="eventos.html">Eventos Especiales</a></li>
+                <li><a href="equipo.html">Equipo de Coordinación</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+            </ul>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="dashboard-main-content">
+            <!-- Barra Superior -->
+            <header class="dashboard-topbar">
+                <div class="dashboard-title">
+                    <h1>Vida Fraterna</h1>
+                    <p>Monaguillos Santo Domingo Savio</p>
+                </div>
+                <div class="topbar-right">
+                    <button id="btnCerrarSesion" class="btn-cerrar-sesion">Cerrar sesión</button>
+                </div>
+            </header>
+
+            <!-- Cuerpo del Panel / Recuadro con Video de Fondo -->
+            <section class="video-box-container">
+                <!-- Video de fondo -->
+                <video autoplay loop muted playsinline class="bg-video">
+                    <source src="video/video1.mp4" type="video/mp4">
+                </video>
+
+                <div class="video-overlay"></div>
+
+                <!-- Contenido con texto y enlaces -->
+                <div class="video-box-content">
+                    <h2>MANUAL PARA MONAGUILLOS:</h2>
+                     <div class="pdf-management-box">
+                                <div id="container-domingo-savio">
+                                    <!-- Se cargará dinámicamente desde la nube -->
+                                </div>
+                                <div class="pdf-link-card">
+                                    <a href="https://doc-10-3o-apps-viewer.googleusercontent.com/viewer/secure/pdf/uo8jp1togfat5mj6ap716o7usmk1jaji/ans48ukl4u9vblkaj1giuocmdt4mv52t/1794003450000/drive/13413921948147730276/ACFrOgCjf9Q-CeLzv6GVQ6lXDJIISPaD0qU3XNDFhpkq2tSGER9bScPRe5mPqFht64_Z5MZGf10OcyOOt3Xic6oqYAku9Aw8IZsxpHeB4rsRqbTdVdZxMy5wLwmQV1hwrN137RuhdOomlbsWXYlFMdxbuqLYmRA6Ce3ccuBctVd4BN5ZVdsqLP7Wf0_gZJxg7dhqoAqF62RLsryBovGBEe-9E2olLYrfgdxPwe8hz46p2Mh4J5r-MVQBFQidQ00=?authuser=0&print=true&nonce=271kc0ib5hfag&user=13413921948147730276&hash=1lps2pnsb23qr9no7i4mjnf3frtr0c4m" download="Manual_para_Monaguillos.pdf" class="btn-pdf-link">
+                                <span class="pdf-icon">📄 PDF</span>
+                                <span class="pdf-title">Manual para Monaguillos (Tercera Edición)</span>
+                            </a>
+                                </div>
+                    </div>
+
+                    <h2>DINÁMICAS GRUPALES:</h2>
+                        <div class="pdf-management-box">
+                                <div id="container-via-lucis">
+                                    <!-- Se cargará dinámicamente desde la nube -->
+                                </div>
+                                <div class="admin-controls">
+                                    <input type="file" id="input-via-lucis" accept="application/pdf" style="display: none;">
+                                    <button id="btnUploadPdf2" class="btn-upload">Subir PDF</button>
+                                    <button id="btn-delete-via-lucis" class="btn-delete" style="display: none;">Eliminar PDF</button>
+                                </div>
+                        </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Firebase SDK v10 (Firestore en tiempo real para PDF sincronizados) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1F2QFk-q3vxvB2nVNRAHpxcSWAdLBihI",
+            authDomain: "monaguillos-7b723.firebaseapp.com",
+            projectId: "monaguillos-7b723",
+            storageBucket: "monaguillos-7b723.firebasestorage.app",
+            messagingSenderId: "514601789417",
+            appId: "1:514601789417:web:ec5cdbb548ec8475a48d78",
+            measurementId: "G-3HCZZF2YLX"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Control de sesión básica
+        if (localStorage.getItem('sesionIniciada') !== 'true') {
+            window.location.href = 'index.html';
+        }
+
+        document.getElementById('btnCerrarSesion').addEventListener('click', () => {
+            localStorage.removeItem('sesionIniciada');
+            window.location.href = 'index.html';
+        });
+
+        // Función de compresión extrema (solo se usará si el archivo supera 1MB)
+        async function comprimirPdfExtremo(file) {
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+                const pdfDoc = await loadingTask.promise;
+                
+                const newPdfDoc = await PDFLib.PDFDocument.create();
+                const numPages = pdfDoc.numPages;
+
+                for (let i = 1; i <= numPages; i++) {
+                    const page = await pdfDoc.getPage(i);
+                    const viewport = page.getViewport({ scale: 1.0 });
+                    
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+                    const jpegDataUri = canvas.toDataURL('image/jpeg', 0.6);
+                    const jpgImageBytes = await fetch(jpegDataUri).then((res) => res.arrayBuffer());
+                    const embeddedImage = await newPdfDoc.embedJpg(jpgImageBytes);
+
+                    const newPage = newPdfDoc.addPage([viewport.width, viewport.height]);
+                    newPage.drawImage(embeddedImage, {
+                        x: 0,
+                        y: 0,
+                        width: viewport.width,
+                        height: viewport.height,
+                    });
+                }
+
+                const pdfBytes = await newPdfDoc.save();
+                return new File([pdfBytes], file.name, { type: 'application/pdf' });
+            } catch (error) {
+                console.error("Error al comprimir mediante rasterización:", error);
+                return file;
+            }
+        }
+
+        // Función generalizada para sincronizar secciones de PDF con Firestore
+        function configurarPdfCloud(inputId, btnUploadId, containerId, deleteBtnId, docId) {
+            const input = document.getElementById(inputId);
+            const btnUpload = document.getElementById(btnUploadId);
+            const container = document.getElementById(containerId);
+            const deleteBtn = document.getElementById(deleteBtnId);
+
+            const docRef = doc(db, "vidafraterna", docId);
+
+            btnUpload.addEventListener('click', () => {
+                input.click();
+            });
+
+            // Escuchar cambios en tiempo real desde la nube (con atributo download)
+            onSnapshot(docRef, (docSnap) => {
+                if (docSnap.exists() && docSnap.data().dataUrl) {
+                    const fileData = docSnap.data();
+                    container.innerHTML = `
+                        <div class="pdf-link-card">
+                            <a href="${fileData.dataUrl}" download="${fileData.name}" class="btn-pdf-link">
+                                <span class="pdf-icon">📄 PDF</span>
+                                <span class="pdf-title">${fileData.name}</span>
+                            </a>
+                        </div>
+                    `;
+                    deleteBtn.style.display = 'inline-flex';
+                } else {
+                    container.innerHTML = `<p class="no-pdf-text" style="color: white;">Sube un archivo PDF.</p>`;
+                    deleteBtn.style.display = 'none';
+                }
+            });
+
+            // Subir archivo PDF, comprimirlo si pesa más de 1MB y guardarlo en Firestore
+            input.addEventListener('change', async (event) => {
+                let file = event.target.files[0];
+                if (!file) return;
+
+                if (file.type !== 'application/pdf') {
+                    alert('Por favor, selecciona un archivo PDF válido.');
+                    return;
+                }
+
+                // SI EL ARCHIVO PESA MÁS DE 1 MB, SE COMPRIME AUTOMÁTICAMENTE
+                if (file.size > 1024 * 1024) {
+                    alert('El archivo supera 1 MB. Comprimiendo y optimizando automáticamente, por favor espera unos segundos...');
+                    file = await comprimirPdfExtremo(file);
+                }
+
+                // Validación final por seguridad para Firestore
+                if (file.size > 1024 * 1024) {
+                    alert('El PDF sigue siendo demasiado extenso incluso después de comprimirlo. Por favor, intenta subir un documento más liviano.');
+                    input.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    try {
+                        const base64File = e.target.result;
+                        await setDoc(docRef, {
+                            name: file.name,
+                            dataUrl: base64File
+                        });
+                        alert('¡PDF subido exitosamente a la nube!');
+                    } catch (error) {
+                        console.error("Error al guardar el PDF en la nube:", error);
+                        alert('No se pudo subir el archivo PDF a la nube. Ten en cuenta el límite de tamaño.');
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // Eliminar documento PDF de la nube
+            deleteBtn.addEventListener('click', async () => {
+                if (confirm('¿Deseas eliminar este archivo PDF para todos los usuarios?')) {
+                    try {
+                        await deleteDoc(docRef);
+                        input.value = '';
+                    } catch (error) {
+                        console.error("Error al eliminar el PDF de la nube:", error);
+                        alert('No se pudo eliminar el archivo.');
+                    }
+                }
+            });
+        }
+
+        // Inicializar la sección vinculada a Firestore
+        configurarPdfCloud('input-via-lucis', 'btnUploadPdf2', 'container-via-lucis', 'btn-delete-via-lucis', 'dinamicasGrupales');
+    </script>
+</body>
+</html>
