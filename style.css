@@ -446,7 +446,7 @@ body {
 }
 /* Reemplaza 'img/mision.jpg' y 'img/vision.jpg' con las rutas reales de tus fotografías */
 .mision-bg {
-    background-image: url('img/mision.jpeg'); 
+    background-image: url('mision.jpeg'); 
 }
 
 .vision-bg {
