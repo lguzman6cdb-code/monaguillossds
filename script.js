@@ -4,52 +4,65 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputContrasena = document.getElementById('contrasena');
     const mensajeError = document.getElementById('mensajeError');
 
-    // Si ya está logueado y regresa al index, mandarlo directo al dashboard
-    if (localStorage.getItem('sesionIniciada') === 'true') {
-        window.location.href = 'dashboard.html';
-        return;
+    // Función para verificar la sesión y redirigir
+    function verificarSesion() {
+        if (localStorage.getItem('sesionIniciada') === 'true') {
+            window.location.replace('dashboard.html');
+        }
     }
 
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // 1. Verificar sesión al cargar la página
+    verificarSesion();
 
-        const usuario = inputUsuario.value.trim();
-        const contrasena = inputContrasena.value.trim();
-
-        mensajeError.textContent = '';
-        mensajeError.style.color = '#ff4d4d';
-
-        if (usuario === '' || contrasena === '') {
-            mostrarMensaje('Por favor, completa todos los campos.');
-            return;
-        }
-
-        // Credenciales de prueba
-        const USUARIO_VALOR = 'monaguillossds';
-        const CONTRASENA_VALOR = 'siemprealegres';
-
-        if (usuario === USUARIO_VALOR && contrasena === CONTRASENA_VALOR) {
-            mensajeError.style.color = '#a36232';
-            mostrarMensaje('¡Inicio de sesión exitoso! Redirigiendo...');
-            
-            // Guardamos el estado de sesión activa
-            localStorage.setItem('sesionIniciada', 'true');
-
-            setTimeout(() => {
-                window.location.href = 'dashboard.html'; 
-            }, 1000);
-
-        } else {
-            mostrarMensaje('Usuario o contraseña incorrectos.');
-            inputUsuario.style.borderColor = '#ff4d4d';
-            inputContrasena.style.borderColor = '#ff4d4d';
+    // 2. Detectar cuando se usa el botón "Atrás" / "Adelante" (BFCache)
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            verificarSesion();
         }
     });
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const usuario = inputUsuario.value.trim();
+            const contrasena = inputContrasena.value.trim();
+
+            mensajeError.textContent = '';
+            mensajeError.style.color = '#ff4d4d';
+
+            if (usuario === '' || contrasena === '') {
+                mostrarMensaje('Por favor, completa todos los campos.');
+                return;
+            }
+
+            // Credenciales de prueba
+            const USUARIO_VALOR = 'monaguillossds';
+            const CONTRASENA_VALOR = 'siemprealegres';
+
+            if (usuario === USUARIO_VALOR && contrasena === CONTRASENA_VALOR) {
+                mensajeError.style.color = '#a36232';
+                mostrarMensaje('¡Inicio de sesión exitoso! Redirigiendo...');
+                
+                // Guardamos el estado de sesión activa
+                localStorage.setItem('sesionIniciada', 'true');
+
+                setTimeout(() => {
+                    // Usamos replace para que index.html no quede en el historial de navegación
+                    window.location.replace('dashboard.html'); 
+                }, 1000);
+
+            } else {
+                mostrarMensaje('Usuario o contraseña incorrectos.');
+                inputUsuario.style.borderColor = '#ff4d4d';
+                inputContrasena.style.borderColor = '#ff4d4d';
+            }
+        });
+    }
 
     function mostrarMensaje(texto) {
         mensajeError.textContent = texto;
     }
-
 });
 const inputImagen = document.getElementById('inputImagen');
 const imageContainer = document.getElementById('imageContainer');
