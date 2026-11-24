@@ -473,6 +473,9 @@ body {
 .fondo7-bg {
     background-image: url('tesoreria.jpg');
 }
+.fondo10-bg {
+    background-image: url('secre.jpeg');
+}
 
 .card-overlay_2 {
     position: absolute;
