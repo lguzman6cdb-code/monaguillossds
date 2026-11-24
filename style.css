@@ -476,7 +476,9 @@ body {
 .fondo10-bg {
     background-image: url('secre.jpeg');
 }
-
+.fondo11-bg {
+    background-image: url('comu.jpeg');
+}
 .card-overlay_2 {
     position: absolute;
     top: 0;
